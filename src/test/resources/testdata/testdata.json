@@ -1,0 +1,14 @@
+{
+  "resourceData": {
+    "name": "priya",
+    "email": "priya@test.com",
+    "phoneNumber": "9876544210",
+    "department": "IT",
+    "role": "Project Resource",
+    "designation": "Associate Developer",
+    "yearsOfExperience": "5",
+    "skill": "Java,selenium,playwright,jmeter",
+    "password": "Test@123",
+    "confirmPassword": "Test@123"
+  }
+}
