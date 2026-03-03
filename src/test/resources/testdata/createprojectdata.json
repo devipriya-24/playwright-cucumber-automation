@@ -1,0 +1,27 @@
+{
+  "validProject": {
+    "projectImagePath": "images/projectimage.png",
+    "projectName": "Project Pulse auto",
+    "projectType": "Custom",
+    "summarytxt": "This is an automation testing project created using Playwright with Java and Cucumber framework for end-to-end validation.",
+    "startDate": "2026-02-01",
+    "endDate": "2026-03-30",
+    "status": "new",
+    "Client": "GSUS",
+    "assigneetxt": "Devipriya L",
+    "budget": "50000"
+  },
+  
+  "invalidProject": {
+    "projectImagePath": "images/projectimage.png",
+    "projectName": "",
+    "projectType": "Internal",
+    "summarytxt": "Invalid project without name",
+    "startDate": "2026-02-01",
+    "endDate": "2026-03-30",
+    "status": "In Progress",
+    "Client": "GSUS",
+    "assignee": "John Doe",
+    "budgetCost": "50000"
+  }
+}
