@@ -16,7 +16,7 @@ import io.cucumber.junit.CucumberOptions;
 		tags="@ProjectCreation",
 		dryRun=false,monochrome=true	
 			)
-public class Testrunner {
+public class TestRunner {
 	
 
 }
