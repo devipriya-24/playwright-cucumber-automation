@@ -9,25 +9,38 @@ import org.json.JSONTokener;
 
 public class JsonReader {
 
-    public static JSONObject getTestData() {
+    public static JSONObject getTestData(String fileName) {
     	
     	
     	try {	
-    		 FileReader reader = new FileReader("src/test/resources/testdata/testdata.json");
+    		 FileReader reader = new FileReader("src/test/resources/testdata/" + fileName);
              JSONTokener token = new JSONTokener(reader);
-             JSONObject fullData = new JSONObject(token);
+             return new JSONObject(token);
 
-             JSONObject resourceData = fullData.getJSONObject("resourceData");
+            // JSONObject resourceData = fullData.getJSONObject("resourceData");
              // Generate random values
-             resourceData.put("name", generateRandomName());
-             resourceData.put("email", generateRandomEmail());
-             resourceData.put("phoneNumber", generateRandomPhone());
-             return resourceData;
+            // resourceData.put("name", generateRandomName());
+          //   resourceData.put("email", generateRandomEmail());
+           //  resourceData.put("phoneNumber", generateRandomPhone());
+          //   return resourceData;
 
     	}catch(Exception e) {
+    		e.printStackTrace();
     		throw new RuntimeException("Failed to read JSON file");
     	}
     	
+    }
+    // 🔹 Resource-specific method (ONLY for resource)
+    public static JSONObject getResourceData(String fileName) {
+
+        JSONObject fullData = getTestData(fileName);
+        JSONObject resourceData = fullData.getJSONObject("resourceData");
+
+        resourceData.put("name", generateRandomName());
+        resourceData.put("email", generateRandomEmail());
+        resourceData.put("phoneNumber", generateRandomPhone());
+
+        return resourceData;
     }
     private static String generateRandomName() {
     	String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

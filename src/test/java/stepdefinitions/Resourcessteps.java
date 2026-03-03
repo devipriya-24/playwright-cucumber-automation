@@ -30,7 +30,7 @@ public class Resourcessteps {
 	@When("user enters resource details")
 	public void user_enters_resource_details() {
 		
-		JSONObject data = JsonReader.getTestData();
+		JSONObject data = JsonReader.getTestData("testdata.json");
 
 		
 		resourcespage.enterResourcesdetails(

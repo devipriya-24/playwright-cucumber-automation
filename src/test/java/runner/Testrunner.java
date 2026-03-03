@@ -12,8 +12,9 @@ import io.cucumber.junit.CucumberOptions;
 		glue={"stepdefinitions", "hooks"},
 		plugin= {"pretty","html:target/cucumber-report.html",
 				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-				tags=" @Login or  @resources or not @ProjectCreation",
-		dryRun=false,monochrome=true
+			//	tags=" @Login OR  @resources",
+		tags="@ProjectCreation",
+		dryRun=false,monochrome=true	
 			)
 public class Testrunner {
 	

@@ -1,6 +1,7 @@
 package hooks;
 
 import com.microsoft.playwright.Browser;
+import java.io.ByteArrayInputStream;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
@@ -10,6 +11,8 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
 import utils.configReader;
 
 public class Hooks {
@@ -53,6 +56,24 @@ public class Hooks {
 		    
 		   // page.navigate(configReader.getProperty("baseurl"));
 	}
+	
+	public static void attachScreenshot(String name) {
+	    byte[] screenshot = page.screenshot();
+	    Allure.addAttachment(name, new ByteArrayInputStream(screenshot));
+	}
+	@After
+	public void tearDown(Scenario scenario) {
+
+	    if (scenario.isFailed()) {
+
+	        byte[] screenshot = page.screenshot();
+	        Allure.addAttachment(
+	            scenario.getName(),
+	            new ByteArrayInputStream(screenshot)
+	        );
+	    }
+	}
+
 	
 	@AfterAll
 	public static void tearDown() {
