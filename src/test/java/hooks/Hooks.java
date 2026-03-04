@@ -24,18 +24,23 @@ public class Hooks {
 
 	@BeforeAll
 	public static void setup() {
+		playwright=Playwright.create();
 		
 		String browserName = configReader.getProperty("browser");
-	    boolean headless = Boolean.parseBoolean(configReader.getProperty("headless"));
+	    //boolean headless = Boolean.parseBoolean(configReader.getProperty("headless"));
+		/*
+		 * browser = playwright.chromium().launch( new BrowserType.LaunchOptions() );
+		 */
 	    int slowMo = Integer.parseInt(configReader.getProperty("slowmo"));
 		
 		
 		
-		 playwright=Playwright.create();
+		 
 		 
 		 BrowserType.LaunchOptions options = new BrowserType.LaunchOptions();
-		    options.setHeadless(headless);
+		    //options.setHeadless(headless);
 		    options.setSlowMo(slowMo);
+		    options.setHeadless(true);
 		   // options.setArgs(java.util.Arrays.asList("--start-maximized"));
 		 
 		// browser=playwright.chromium().launch(new
@@ -64,7 +69,7 @@ public class Hooks {
 	@After
 	public void tearDown(Scenario scenario) {
 
-	    if (scenario.isFailed()) {
+	    if (scenario.isFailed()&& page != null) {
 
 	        byte[] screenshot = page.screenshot();
 	        Allure.addAttachment(
@@ -77,8 +82,12 @@ public class Hooks {
 	
 	@AfterAll
 	public static void tearDown() {
-		browser.close();
-		playwright.close();
+		if (browser != null) {
+	        browser.close();
+	    }
+	    if (playwright != null) {
+	        playwright.close();
+	    }
 	}
 	
 	
